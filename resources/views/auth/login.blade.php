@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="../dist/assets/compiled/css/auth.css" />
 </head>
 
-<body style="background-color: #f2f7ff;">
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="row p-5" style="border: 5px solid #16537e; border-radius: 20px; background-color: #f2f7ff;">
+<body style="background-color: black;">
+    <div class="container text-white d-flex justify-content-center align-items-center vh-100">
+        <div class="row p-5" style="border: 5px solid red; border-radius: 20px; background-color: black;">
             <div class="col">
                 <div class="auth-logo d-flex justify-content-center">
-                    <a href="/"><img src="../dist/assets/compiled/img/AE.png" style="width: 100px; height: 100px"
+                    <a href="/"><img src="/dist/assets/img/lucas-sh-partners-logo-white-01.png" style="width: 368px"
                             alt="Logo" /></a>
                 </div>
-                <h1 class="auth-title">Log in.</h1>
-                <p class="auth-subtitle mb-5">Log in with your data provided.</p>
+                <h1 class="auth-title text-white mt-3">Log in.</h1>
+                <p class="auth-subtitle mb-3">Log in with your data provided.</p>
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -58,7 +58,7 @@
                         </div>
                         <p id="help-password-login" class="text-danger mt-2"></p>
                     </div>
-                    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-3" onclick="login()">
+                    <button style="background-color:red" class="btn btn-block btn-lg text-white shadow-lg mt-3" onclick="login()">
                         Log in
                     </button>
             </div>
@@ -74,6 +74,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const theme = localStorage.getItem('theme');
+    
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+        const toggleDarkMode = document.getElementById('toggle-dark');
+        if (toggleDarkMode) {
+            toggleDarkMode.checked = true;
+        }
+    } else {
+        document.body.classList.add('dark-theme');
+        const toggleDarkMode = document.getElementById('toggle-dark');
+        if (toggleDarkMode) {
+            toggleDarkMode.checked = true;
+        }
+        // Simpan pengaturan tema gelap ke localStorage
+        localStorage.setItem('theme', 'dark');
+    }
+    
+    const toggleDarkMode = document.getElementById('toggle-dark');
+    if (toggleDarkMode) {
+        toggleDarkMode.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+});
+
+</script>
+
 </body>
 
 </html>
